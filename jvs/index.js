@@ -1,3 +1,6 @@
+/* La idea es hacer una mini tienda de tokens para un negocio de tokens que te puedan intercambiar.
+Como me sugirio el tutor corrector mejor que no seguir trabajando en un juego de azar */
+
 const tokens = []//Defino el Array de productos
 
 /* ESTOS SON LOS VALORES QUE YO PONDRIA POR DEFECTO
@@ -73,6 +76,7 @@ while (cargarToken) { //Valores de los tokens libres escribir
   }
  
 let suma_total = 0;
+contenido_tokens = " ";
 
 for (let tok of tokens_comprados) {
      let token = new Producto(tok.id, tok.nombre, tok.precio);
