@@ -81,7 +81,3 @@ tokens_comprados.forEach((tok) => {
 })
 alert('Total Token:\n\n' + contenido_tokens + '€' + suma_total)
 
-tokens_comprados.forEach((tok) => {
-  suma_total += tok.precio
-})
-alert('Total Token:\n\n' + contenido_tokens + '€' + suma_total)
