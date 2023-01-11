@@ -110,6 +110,13 @@ p{
     text-transform: uppercase;
     
 }
+.seguri-comprando{
+    text-transform: uppercase;
+    color: aliceblue;
+    text-decoration: none;
+    
+
+}
 .carrito-acciones-total{
     display: flex;
     background-color: rgb(155, 185, 240);
@@ -164,7 +171,7 @@ main{
     width: 8vw;
 
 }
-.ocultar{
+.disabled{
     display: none;
 }
 .producto-agregar:hover{
