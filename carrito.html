@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>D-TOKEN LAND</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="./css/estilos.css">
+     </head>
+     <body>
+    <header>
+      <div class="header">
+        <a class="home" href="./index.html"><h1>D-TOKEN LAND</h1></a>
+        <nav class="carrito_grupo">
+          <p>CARRITO</p>
+          <a class="boton-menu boton-carrito" href="#">
+            <img class="carrito" src="./TOKENS/shopping car.png" alt="carrito de la compra">
+            <i class="bi bi-cart-fill"></i>
+            <span id="numerito" class="numerito">0</span>
+          </a>
+         </nav>
+        </div>
+    </header>
+    <main>
+      <div class="contenedor-carrito">
+        <p class="carrito-vacio">Tu carrito está vacio</p>
+       
+        <div class="carrito-productos ocultar">
+          <div class="carrito-producto">
+            <img class="carrito-producto-imagen" src="./TOKENS/golden_token_1.jpg" alt="">
+
+            <div class="carrito-producto-titulo">
+              <small>Titulo</small>
+              <h3>GOLDEN TOKEN</h3>
+            </div>
+            <div class="carrito-producto-cantidad">
+              <small>Cantidad</small>
+              <p>1</p>
+            </div>
+            <div class="carrito-producto-precio">
+              <small>Precio</small>
+              <p>€-120</p>
+            </div>
+            <div class="carrito-producto-subtotal">
+              <small>Subtotal</small>
+              <p>€-120</p>
+              <button class="carrito-producto-eliminar"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+              </svg></button>
+            </div>
+          </div>
+          <div class="carrito-producto">
+            <img class="carrito-producto-imagen" src="./TOKENS/silver_token_1.jpg" alt="">
+
+            <div class="carrito-producto-titulo">
+              <small>Titulo</small>
+              <h3>SILVER TOKEN</h3>
+            </div>
+            <div class="carrito-producto-cantidad">
+              <small>Cantidad</small>
+              <p>2</p>
+            </div>
+            <div class="carrito-producto-precio">
+              <small>Precio</small>
+              <p>€-100</p>
+            </div>
+            <div class="carrito-producto-subtotal">
+              <small>Subtotal</small>
+              <p>€-200</p>
+              <button class="carrito-producto-eliminar"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+              </svg></button>
+            </div>
+          </div>
+
+        </div>
+        <div class="carrito-acciones ocultar">
+          <div class="carrito-acciones-izquierda">
+            <button class="carrito-acciones-vaciar">Vaciar Carrito</button>
+
+          </div>
+          <div class="carrito-acciones-derecha">
+            <!--<div class="carrito-acciones-total">
+              <p>TOTAL:</p>
+              <p id="total">€-400</p>
+             
+            </div>-->
+            <button class="carrito-acciones-comprar">Comprar Ahora</button>
+            <div class="carrito-acciones-total">
+              <p>TOTAL:</p>
+              <p id="total">€-400</p>
+             
+            </div>
+          </div>
+
+        </div>
+        <p class="carrito-comprado ocultar">Muchas gracias por comprar con nosotros</p>
+
+
+
+
+      </div>
+      
+    
+     
+    
+    </main>
+    <footer>
+    
+
+
+
+      <p>D-TOKEN World</p>
+    
+     </footer>
+     
+       
+       <script src="./jvs/carrito.js"></script>
+      
+      
+  
+      
+  </body>
+</html>

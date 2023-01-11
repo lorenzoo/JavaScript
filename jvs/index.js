@@ -1,83 +1,146 @@
-/* La idea es hacer una mini tienda de tokens para un negocio de tokens que te puedan intercambiar.
-Como me sugirio el tutor corrector mejor que no seguir trabajando en un juego de azar */
+/* La idea es hacer una mini tienda de tokens para un negocio de tokens que se puedan intercambiar.
+Como me sugirio el tutor corrector  */
 
-const tokens = [] //Defino el Array de productos
 
-/* ESTOS SON LOS VALORES QUE YO PONDRIA POR DEFECTO
-  {id:1, nombre:"Platino", precio: 1000},
-  {id:2, nombre:"Oro", precio: 800},
-  {id:3, nombre:"Plata", precio: 600},
-  {id:4, nombre:"Cobre", precio: 300},
-  {id:5, nombre:"Estaño", precio: 100},
-*/
 
-const tokens_comprados = [] //Defino los productos que compro
+//Defino los productos que compro
+const productos = [
+    {
+        id: "golden_token",
+        titulo: "GOLDEN TOKEN",
+        imagen: "./TOKENS/golden_token_1.jpg",
+        categoria: {
+            nombre: "PS-4",
+            id: "golden_token"
+        },
+        precio: 120
+    },
+    {
+        id: "silver_token",
+        titulo: "SILVER TOKEN",
+        imagen: "./TOKENS/silver_token_1.jpg",
+        categoria: {
+            nombre: "NINTENDO,PS-4",
+            id: "silver_token"
+        },
+        precio: 100
+    },
+    {
+        id: "platinum_token",
+        titulo: "PLATINUM TOKEN",
+        imagen: "./TOKENS/platinum_token_1.jpg",
+        categoria: {
+            nombre: "SEGA",
+            id: "platinum_token"
+        },
+        precio: 150
+    },
+    {
+        id: "bronze_token",
+        titulo: "BRONZE TOKEN",
+        imagen: "./TOKENS/coper_token_1.jpg",
+        categoria: {
+            nombre: "NINTENDO,PS-4",
+            id: "bronze_token"
+        },
+        precio: 85
+    },
+    {
+        id: "special_token",
+        titulo: "SUPER DUPER",
+        imagen: "./TOKENS/special_token_1.jpg",
+        categoria: {
+            nombre: "PS-4",
+            id: "special_token"
+        },
+        precio: 200
+    },
+    {
+        id: "deal_token",
+        titulo: "OFERTA ESPECIAL",
+        imagen: "./TOKENS/deal_token_1.jpg",
+        categoria: {
+            nombre: "NINTENDO,PS-4",
+            id: "deal_token"
+        },
+        precio: 180
+    },
+];
 
-class Producto {
-  constructor(id, nombre, precio) {
-    this.id = id
-    this.nombre = nombre
-    this.precio = precio
-  }
+
+
+const contenedorProductos = document.querySelector("#contenedor-productos");
+const botonesCategorias = document.querySelectorAll(".boton-categoria");
+const tituloPrincipal = document.querySelector("#titulo-principal");
+let botonesAgregar = document.querySelectorAll(".producto-agregar");
+const numerito = document.querySelector("#numerito");
+
+
+function cargarProductos(productosElegidos) {
+
+  contenedorProductos.innerHTML = "";
+
+  productosElegidos.forEach(producto => {
+
+      const div = document.createElement("div");
+      div.classList.add("producto");
+      div.innerHTML = `
+          <img class="producto-imagen" src="${producto.imagen}" alt="${producto.titulo}">
+          <div class="producto-detalles">
+              <h3 class="producto-titulo">${producto.titulo}</h3>
+              <p class="producto-precio">$${producto.precio}</p>
+              <button class="producto-agregar" id="${producto.id}">Agregar</button>
+          </div>
+      `;
+
+      contenedorProductos.append(div);
+  })
+
+  actualizarBotonesAgregar();
 }
-// Busqueda de token
-function seleccionarToken(id) {
-  return tokens.find((item) => item.id === id) || null
+
+cargarProductos(productos);
+
+
+
+function actualizarBotonesAgregar() {
+  botonesAgregar = document.querySelectorAll(".producto-agregar");
+
+  botonesAgregar.forEach(boton => {
+      boton.addEventListener("click", agregarAlCarrito);
+  });
 }
 
-function meterEnCompras(token) {
-  tokens_comprados.push(token)
+let productosEnCarrito;
+
+let productosEnCarritoLS = localStorage.getItem("productos-en-carrito");
+
+if (productosEnCarritoLS) {
+  productosEnCarrito = JSON.parse(productosEnCarritoLS);
+  actualizarNumerito();
+} else {
+  productosEnCarrito = [];
 }
 
-let cargarToken = true
+function agregarAlCarrito(e) {
+  const idBoton = e.currentTarget.id;
+  const productoAgregado = productos.find(producto => producto.id === idBoton);
 
-while (cargarToken) {
-  //Valores de los tokens libres escribir
-  let id_token = tokens.length + 1
-  let nombre_token = prompt('Nombre del Token:')
-  let precio_token = parseFloat(prompt('Precio del Token'))
-  let token = new Producto(id_token, nombre_token, precio_token)
-
-  //Agregar tokens al Array de tokens
-  tokens.push(token)
-  //Cortar subida de datos
-  cargarToken = confirm('Quieres añadir mas Tokens?')
-}
-
-cargarToken = true
-
-while (cargarToken) {
-  let contenido_tokens = ''
-  for (let token of tokens) {
-    contenido_tokens +=
-      token.id + '- ' + token.nombre + '€' + token.precio + '\n'
-  }
-  //Indicamos token ID
-  let id_token = parseInt(prompt('Selecciona tu Token:\n' + contenido_tokens))
-
-  //Buscamos el token
-  let token = seleccionarToken(id_token)
-
-  if (token != null) {
-    //Añadimos token a la compra
-    meterEnCompras(token)
+  if(productosEnCarrito.some(producto => producto.id === idBoton)) {
+      const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
+      productosEnCarrito[index].cantidad++;
   } else {
-    alert('Este Token con ID numero: ' + id_token + ' no esta disponible')
+      productoAgregado.cantidad = 1;
+      productosEnCarrito.push(productoAgregado);
   }
 
-  cargarToken = confirm('Quieres añadir mas Tokens?')
+  actualizarNumerito();
+
+  localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 }
 
-let suma_total = 0
-contenido_tokens = ''
-
-/*for (let tok of tokens_comprados) {
-  let token = new Producto(tok.id, tok.nombre, tok.precio)
-  suma_total += token.precio;
-  alert('Total Token:\n\n' + contenido_tokens + '€' + suma_total)
-} */
-tokens_comprados.forEach((tok) => {
-  suma_total += tok.precio
-})
-alert('Total Token:\n\n' + contenido_tokens + '€' + suma_total)
+function actualizarNumerito() {
+  let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+  numerito.innerText = nuevoNumerito;
+}
 
