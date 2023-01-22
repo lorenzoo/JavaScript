@@ -111,9 +111,13 @@ p{
     
 }
 .seguri-comprando{
-    text-transform: uppercase;
-    color: aliceblue;
+    border: 0;
     text-decoration: none;
+    background-color: rgb(199, 15, 104);
+    color: aliceblue;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    text-transform: uppercase;
     
 
 }
@@ -164,6 +168,7 @@ main{
 }
 
 .producto-agregar{
+    border: 0;
     background-color: rgb(199, 15, 104);
     color: aliceblue;
     border-radius: 1rem;
@@ -173,6 +178,8 @@ main{
 }
 .disabled{
     display: none;
+    
+   
 }
 .producto-agregar:hover{
     background-color: aliceblue;
@@ -185,3 +192,12 @@ footer{
     margin-top: 2%;
 }
 
+/*.carrito_comprado {
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+  }*/
+
+
+  /* Test SWEETALERT */ 
+  body {
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+}

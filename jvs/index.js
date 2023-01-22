@@ -3,7 +3,7 @@ Como me sugirio el tutor corrector  */
 
 
 
-//Defino los productos que compro
+//Defino los productos
 const productos = [
     {
         id: "golden_token",
@@ -70,12 +70,10 @@ const productos = [
 
 
 const contenedorProductos = document.querySelector("#contenedor-productos");
-const botonesCategorias = document.querySelectorAll(".boton-categoria");
-const tituloPrincipal = document.querySelector("#titulo-principal");
 let botonesAgregar = document.querySelectorAll(".producto-agregar");
 const numerito = document.querySelector("#numerito");
 
-
+//creamos la plantilla de producto que se cargara en nuestro html
 function cargarProductos(productosElegidos) {
 
   contenedorProductos.innerHTML = "";
@@ -95,14 +93,14 @@ function cargarProductos(productosElegidos) {
 
       contenedorProductos.append(div);
   })
-
+//actualizamos los botones del producto que se van creando
   actualizarBotonesAgregar();
 }
 
 cargarProductos(productos);
 
 
-
+//actualizamos los botones del producto que se van creando
 function actualizarBotonesAgregar() {
   botonesAgregar = document.querySelectorAll(".producto-agregar");
 

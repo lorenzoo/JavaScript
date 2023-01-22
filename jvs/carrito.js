@@ -1,6 +1,6 @@
 
 /* AQUI EMPIEZA LA PARTE DEL JS DE CARRITO */
-
+// productos almacenados en el localStorage ( accedemos a los que se almacenaron de la pagina index)
 let productosEnCarrito = localStorage.getItem("productos-en-carrito");
 productosEnCarrito = JSON.parse(productosEnCarrito);
 
@@ -12,6 +12,8 @@ let botonesEliminar = document.querySelectorAll("#carrito-producto-eliminar");
 const botonVaciar = document.querySelector(".carrito-acciones-vaciar");
 const contenedorTotal = document.querySelector("#total");
 const botonComprar = document.querySelector(".carrito-acciones-comprar");
+// TEST swealert ...no esta funcionando me quedo loco .....
+const  botonComprarG= document.querySelector(".gracias");
 
 
 function cargarProductosCarrito() {
@@ -23,7 +25,7 @@ function cargarProductosCarrito() {
         contenedorCarritoComprado.classList.add("disabled");
     
         contenedorCarritoProductos.innerHTML = "";
-    
+    //creamos los productos como se cargaran en el html con su descripcion y cantidad
         productosEnCarrito.forEach(producto => {
     
             const div = document.createElement("div");
@@ -101,6 +103,9 @@ function actualizarTotal() {
     total.innerText = `$${totalCalculado}`;
 }
 
+
+
+
 botonComprar.addEventListener("click", comprarCarrito);
 function comprarCarrito() {
 
@@ -111,5 +116,27 @@ function comprarCarrito() {
     contenedorCarritoProductos.classList.add("disabled");
     contenedorCarritoAcciones.classList.add("disabled");
     contenedorCarritoComprado.classList.remove("disabled");
+    //AQUI AÑADIMOS EL SWEETALERT
+   
+    Swal.fire({
+        icon: `success`,
+        title: 'Gracias, Tu compra se ha realizado correctamente!',
+        background: `#d4b0f5`, // #d4b0f5 , #c98efd
+        confirmButtonColor: `#8e1ff0`,
+        timer: 3000,
+      })
 
-}
+
+     
+    }
+    
+
+
+
+
+
+
+
+
+
+
